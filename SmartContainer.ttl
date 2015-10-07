@@ -1,0 +1,224 @@
+@prefix : <http://daspos.com/SmartContainer#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://daspos.com/SmartContainer> .
+
+<http://daspos.com/SmartContainer> rdf:type owl:Ontology ;
+                                   
+                                   owl:imports <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern> ,
+                                               <http://www.w3.org/ns/prov-o-20130430> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://daspos.com/SmartContainer#actedOnBehalfOf
+
+:actedOnBehalfOf rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:range :User ;
+                 
+                 rdfs:domain :softwareAgent ;
+                 
+                 owl:equivalentProperty <http://www.w3.org/ns/prov#actedOnBehalfOf> .
+
+
+
+###  http://daspos.com/SmartContainer#hasRequiredEnvironment
+
+:hasRequiredEnvironment rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:range :ComputationalEnvironment ;
+                        
+                        rdfs:domain :computationalActivity .
+
+
+
+###  http://daspos.com/SmartContainer#hasRequiredImage
+
+:hasRequiredImage rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:range :RequiredImage ;
+                  
+                  rdfs:domain :runningContainer ;
+                  
+                  rdfs:subPropertyOf <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern#hasRequirement> .
+
+
+
+###  http://daspos.com/SmartContainer#produceEnvironment
+
+:produceEnvironment rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:range :ComputationalEnvironment ;
+                    
+                    rdfs:domain :provisonActivity .
+
+
+
+###  http://daspos.com/SmartContainer#producesImage
+
+:producesImage rdf:type owl:ObjectProperty ;
+               
+               rdfs:range :OutcomeImage ;
+               
+               rdfs:domain :runningContainer ;
+               
+               rdfs:subPropertyOf <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern#hasOutcome> .
+
+
+
+###  http://daspos.com/SmartContainer#wasAssociatedWIth
+
+:wasAssociatedWIth rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain :runningContainer ;
+                   
+                   rdfs:range :softwareAgent ;
+                   
+                   owl:equivalentProperty <http://www.w3.org/ns/prov#wasAssociatedWith> .
+
+
+
+###  http://daspos.com/SmartContainer#wasInfluencedBy
+
+:wasInfluencedBy rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:domain :runningContainer ;
+                 
+                 rdfs:range <http://www.w3.org/ns/prov#Plan> ;
+                 
+                 owl:equivalentProperty <http://www.w3.org/ns/prov#wasInfluencedBy> .
+
+
+
+###  http://daspos.com/SmartContainer#wasInformedBy
+
+:wasInformedBy rdf:type owl:ObjectProperty ;
+               
+               owl:equivalentProperty <http://www.w3.org/ns/prov#wasInformedBy> .
+
+
+
+###  http://www.w3.org/ns/prov#actedOnBehalfOf
+
+
+
+
+###  http://www.w3.org/ns/prov#wasAssociatedWith
+
+
+
+
+###  http://www.w3.org/ns/prov#wasInfluencedBy
+
+
+
+
+###  http://www.w3.org/ns/prov#wasInformedBy
+
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://daspos.com/SmartContainer#ComputationalEnvironment
+
+:ComputationalEnvironment rdf:type owl:Class .
+
+
+
+###  http://daspos.com/SmartContainer#OutcomeImage
+
+:OutcomeImage rdf:type owl:Class ;
+              
+              rdfs:subClassOf <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern#Outcome> ,
+                              <http://www.w3.org/ns/prov#Entity> .
+
+
+
+###  http://daspos.com/SmartContainer#RequiredImage
+
+:RequiredImage rdf:type owl:Class ;
+               
+               rdfs:subClassOf <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern#Requirement> ,
+                               <http://www.w3.org/ns/prov#Entity> .
+
+
+
+###  http://daspos.com/SmartContainer#User
+
+:User rdf:type owl:Class ;
+      
+      rdfs:subClassOf <http://www.w3.org/ns/prov#Person> .
+
+
+
+###  http://daspos.com/SmartContainer#computationalActivity
+
+:computationalActivity rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :runningContainer .
+
+
+
+###  http://daspos.com/SmartContainer#provisonActivity
+
+:provisonActivity rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :runningContainer .
+
+
+
+###  http://daspos.com/SmartContainer#provisonPlan
+
+:provisonPlan rdf:type owl:Class ;
+              
+              rdfs:subClassOf <http://www.w3.org/ns/prov#Plan> .
+
+
+
+###  http://daspos.com/SmartContainer#runningContainer
+
+:runningContainer rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf <http://descartes-core.org/ontologies/activity/1.0/ActivityPattern#FlexibleActivity> ,
+                                  <http://www.w3.org/ns/prov#Activity> ;
+                  
+                  rdfs:seeAlso "" .
+
+
+
+###  http://daspos.com/SmartContainer#softwareAgent
+
+:softwareAgent rdf:type owl:Class ;
+               
+               rdfs:subClassOf <http://www.w3.org/ns/prov#SoftwareAgent> .
+
+
+
+###  http://daspos.com/SmartContainer#workflowPlan
+
+:workflowPlan rdf:type owl:Class ;
+              
+              rdfs:subClassOf <http://www.w3.org/ns/prov#Plan> .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
